@@ -1,0 +1,512 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>桌面控制台</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="移动表单生成APP" />
+		<link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/demo6/base/style.bundle.css" rel="stylesheet" type="text/css" />
+		<!--
+		<link href="assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+		-->
+		<link href="window/content/shared/styles/examples-offline.css" rel="stylesheet">
+		<link href="window/kendo.common.min.css" rel="stylesheet">
+		<link href="window/kendo.rtl.min.css" rel="stylesheet">
+		<link href="window/kendo.default.min.css" rel="stylesheet">
+		<script src="window/jquery.min.js"></script>
+		<script src="window/jszip.min.js"></script>
+		<script src="window/kendo.all.js"></script>
+		<script src="window/content/shared/js/console.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/vue-resource.js"></script>
+		<script src="js/Convert_Pinyin.js"></script>
+		
+		<style>
+		.primary {
+		border-color: rgb(88, 103, 221);
+		background:rgb(88, 103, 221);
+		}
+		.success{
+			border-color:rgb(52, 191, 163);
+			background:rgb(52, 191, 163);
+		}
+		#viewDiv{
+			margin:0 auto
+		}
+		.m-body{
+		  background: url(img/background2.jpg) no-repeat center 0;
+		  height:100%;
+		  width: 100%;
+		  background-size: cover;
+		}
+		.projectpanel{
+		  margin: 5px 5px 5px 5px;
+		  background:#A1206B;
+		 
+		}
+		.pagepanel{
+		  margin: 5px 5px 5px 5px;
+		  background:#EF9B36;
+		 
+		}
+		.previewpanel{
+		  margin: 5px 5px 5px 5px;
+		  background:#A09B01;
+		 
+		}
+		.portletheader{
+		  margin: 25px 5px 5px 5px;
+		}
+		.itemrow{
+		  height:50px;
+		}
+		.buttonlabel{
+		  width:100%;
+		}
+		.header{
+			
+			background-color:#A8C8D8;
+			opacity:0.5;
+			filter:Alpha(opacity=50); /* IE8 以及更早的浏览器 */
+		}
+		.hr-line{
+			
+			height: 2rem;  
+			width: 0.05rem; 
+			margin-right: 1.5rem;
+			background: radial-gradient(grey 24%, white 100%);  
+		}
+		
+		.head-img{
+			
+			margin-right: 1rem;
+			width:3rem;
+			height:3rem;
+		}
+		.head-xiaoxi{
+			
+			margin-right: 1rem;
+			width:2rem;
+			height:2rem;
+		}
+		.head-left{
+			
+			position: relative;
+			float:left;
+		}
+		.head-right{
+			position: relative;
+			float:right;
+		}
+		.head-left-img{
+			
+			margin-left: 3rem;
+			width:2.5rem;
+			height:2.5rem;
+		}
+		
+		.xmgl-img{
+			margin: 3rem 0rem 0rem 3rem;
+			width: 5rem;
+			height: 5rem;
+			border-radius: 0.3rem;
+			
+		}
+		.xmgl p{
+			margin: 1rem 0rem 0rem 3rem;
+			font-weight: bold;
+		}
+		.xmgl:hover img{
+			width: 5rem;
+			height: 5rem;
+			box-shadow: 0px 1px 5px 2px #FBFCFE;
+			cursor: pointer;
+		}
+	</style>
+	
+	</head>
+
+	<body id="app">
+
+		<header class="header" >
+				
+					<div class="head-left">
+						<a href=""><img class="head-left-img" src="tubiao/guanli1.png" /></a>
+					</div>
+					<div class="head-right form-inline">
+						
+						<div class="hr-line "></div>
+						<a href=""><img class="head-xiaoxi" src="tubiao/xiaoxi.png" /></a>
+						<a href=""><img class="head-img" src="tubiao/touxiang.png" /></a>
+						<a href=""><img class="head-img" src="tubiao/sosuo.png" /></a>
+						<a href=""><img class="head-img" src="tubiao/gonju.png" /></a>
+					</div> 
+				
+			
+		</header>
+		<!--页面背景 开始-->
+		<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" >
+			<div class="mianban text-center text-white">
+				<div class="xmgl" id="xiangmuguanli" title="项目管理">
+					<img class="xmgl-img" src="tubiao/xiangmuguanli.png" />
+					<p>项目管理</p>
+				</div>
+				<div class="xmgl" id="xiangmumianban" title="项目面板" style="display: none;">
+					<img class="xmgl-img" src="tubiao/xiangmu.png" />
+					<p>项目面板</p>
+				</div>
+				<div class="xmgl" id="jueseguanli" title="角色管理" >
+					<img class="xmgl-img" src="tubiao/jsgl.png" />
+					<p>角色管理</p>
+				</div>
+				<div class="xmgl" id="shujumianban" title="参考数据">
+					<img class="xmgl-img" src="tubiao/data.png" />
+					<p>参考数据</p>
+				</div>
+				<div class="xmgl" id="caozuomianban" title="元素管理">
+					<img class="xmgl-img" src="tubiao/caozuo.png" />
+					<p>元素管理</p>
+				</div>
+			</div>
+			<div class="mianban text-center text-white">
+				<div class="xmgl" id="liebiaomianban" title="列表面板" style="display: none;">
+					<img class="xmgl-img" src="tubiao/liebiao.png" />
+					<p>列表面板</p>
+				</div>
+				<div class="xmgl" id="xiangmudaohang" title="项目导航" >
+					<img class="xmgl-img" src="tubiao/daohang2.png" />
+					<p>项目导航</p>
+				</div>
+				<div class="xmgl" id="yonghuguanli" title="用户管理" >
+					<img class="xmgl-img" src="tubiao/yhgl.png" />
+					<p>用户管理</p>
+				</div>
+				<div class="xmgl" id="shujubaobiao" title="流程数据">
+					<img class="xmgl-img" src="tubiao/excel.png" />
+					<p>流程数据</p>
+				</div>
+				<div class="xmgl" id="ziyuanguanli" title="资源管理">
+					<img class="xmgl-img" src="tubiao/zygl.png" />
+					<p>资源管理</p>
+				</div>
+			</div>
+			<div class="mianban text-center text-white">
+				<div class="xmgl" id="jiagouguanli" title="部门管理" >
+					<img class="xmgl-img" src="tubiao/jggl.png" />
+					<p>部门管理</p>
+				</div>
+			</div>
+			
+			<div id="example">
+			    <div id="win-xmgl">
+			      <object type="text/html" data="win-xmgl.html" width="100%" height="100%"></object>
+			    </div>
+				<div id="win-xmmb" style="padding: 0rem;">
+				  <object type="text/html" data="win-formBuilder.html" width="100%" height="100%"></object>
+				</div>
+				<div id="win-czmb" style="padding: 0rem;">
+				  <object type="text/html" data="win-caozuo.html" width="100%" height="100%"></object>
+				</div>
+				<div id="win-sjmb" style="padding: 0rem;">
+				  <object type="text/html" data="win-shuju.html" width="100%" height="100%"></object>
+				</div>
+				<div id="win-lbmb" style="padding: 0rem;">
+				  <object type="text/html" data="win-rowtemplate.html" width="100%" height="100%"></object>
+				</div>
+				<div id="win-sjbb" style="padding: 0rem;">
+				  <object type="text/html" data="win-exceldata.html" width="100%" height="100%"></object>
+				</div>
+				<div id="win-xmdh" style="padding: 0rem;">
+				  <object type="text/html" data="win-daohang.html" width="100%" height="100%"></object>
+				</div>
+				<div id="win-yhgl" style="padding: 0rem;">
+				  <object type="text/html" data="win-yhgl.html" width="100%" height="100%"></object>
+				</div>
+				<div id="win-jsgl" style="padding: 0rem;">
+				  <object type="text/html" data="win-jsgl.html" width="100%" height="100%"></object>
+				</div>
+				<div id="win-zygl" style="padding: 0rem;">
+				  <object type="text/html" data="win-zygl.html" width="100%" height="100%"></object>
+				</div>
+				<div id="win-jggl" style="padding: 0rem;">
+				  <object type="text/html" data="win-jggl.html" width="100%" height="100%"></object>
+				</div>
+				
+			    <div class="responsive-message"></div>
+			    <script>
+					
+			        $(document).ready(function() {
+			            var xmglWindow = $("#win-xmgl"),
+			                xiangmuguanli = $("#xiangmuguanli");
+						
+						var xmmbWindow = $("#win-xmmb"),
+						    xiangmumianban = $("#xiangmumianban");
+						
+						var czmbWindow = $("#win-czmb"),
+						    caozuomianban = $("#caozuomianban");
+						
+						var sjmbWindow = $("#win-sjmb"),
+						    shujumianban = $("#shujumianban");
+						
+						var lbmbWindow = $("#win-lbmb"),
+						    liebiaomianban = $("#liebiaomianban");
+						
+						var sjbbWindow = $("#win-sjbb"),
+						    shujubaobiao = $("#shujubaobiao");
+							
+						var xmdhWindow = $("#win-xmdh"),
+						    xiangmudaohang = $("#xiangmudaohang");
+							
+						var yhglWindow = $("#win-yhgl"),
+						    yonghuguanli = $("#yonghuguanli");
+							
+						var jsglWindow = $("#win-jsgl"),
+						    jueseguanli = $("#jueseguanli");
+							
+						var zyglWindow = $("#win-zygl"),
+						    ziyuanguanli = $("#ziyuanguanli");	
+							
+						var jgglWindow = $("#win-jggl"),
+						    jiagouguanli = $("#jiagouguanli");	
+							
+			            xiangmuguanli.click(function() {
+			                xmglWindow.data("kendoWindow").open();
+			               // undo.fadeOut();
+			            });
+						xiangmumianban.click(function() {
+						    xmmbWindow.data("kendoWindow").open().maximize();
+						   // undo.fadeOut();
+						});
+						caozuomianban.click(function() {
+						    czmbWindow.data("kendoWindow").open().maximize();
+						   // undo.fadeOut();
+						});
+						shujumianban.click(function() {
+						    sjmbWindow.data("kendoWindow").open().maximize();
+						   // undo.fadeOut();
+						});
+						liebiaomianban.click(function() {
+						    lbmbWindow.data("kendoWindow").open().maximize();
+						   // undo.fadeOut();
+						});
+						shujubaobiao.click(function() {
+						    sjbbWindow.data("kendoWindow").open().maximize();
+						   // undo.fadeOut();
+						});
+						xiangmudaohang.click(function() {
+						    xmdhWindow.data("kendoWindow").open().maximize();
+						   // undo.fadeOut();
+						});
+						yonghuguanli.click(function() {
+						    yhglWindow.data("kendoWindow").open().maximize();
+						   // undo.fadeOut();
+						});
+						jueseguanli.click(function() {
+						    jsglWindow.data("kendoWindow").open().maximize();
+						   // undo.fadeOut();
+						});
+						ziyuanguanli.click(function() {
+						    zyglWindow.data("kendoWindow").open().maximize();
+						   // undo.fadeOut();
+						});
+						jiagouguanli.click(function() {
+						    jgglWindow.data("kendoWindow").open().maximize();
+						   // undo.fadeOut();
+						});
+			
+			            function onClose() {
+			               // undo.fadeIn();
+			            }
+			
+			            xmglWindow.kendoWindow({
+			                width: "1060px",
+											height:"600px",
+			                title: "项目管理",
+			                visible: false,
+			                actions: [
+			                    "Pin",
+			                    "Minimize",
+			                    "Maximize",
+			                    "Close"
+			                ],
+			                close: onClose
+			            }).data("kendoWindow").center();
+						xmmbWindow.kendoWindow({
+						    width: "800px",
+							height:"500px",
+						    title: "项目面板",
+						    visible: false,
+						    actions: [
+						        "Pin",
+						        "Close"
+						    ],
+						    close: onClose
+						}).data("kendoWindow").center();
+						czmbWindow.kendoWindow({
+						    width: "800px",
+							height:"500px",
+						    title: "元素管理",
+						    visible: false,
+						    actions: [
+						        "Pin",
+						        "Close"
+						    ],
+						    close: onClose
+						}).data("kendoWindow").center();
+						sjmbWindow.kendoWindow({
+						    width: "800px",
+							height:"500px",
+						    title: "参考数据",
+						    visible: false,
+						    actions: [
+						        "Pin",
+						        "Close"
+						    ],
+						    close: onClose
+						}).data("kendoWindow").center();
+						lbmbWindow.kendoWindow({
+						    width: "800px",
+							height:"500px",
+						    title: "列表面板",
+						    visible: false,
+						    actions: [
+						        "Pin",
+						        "Close"
+						    ],
+						    close: onClose
+						}).data("kendoWindow").center();
+						sjbbWindow.kendoWindow({
+						    width: "800px",
+							height:"500px",
+						    title: "流程数据",
+						    visible: false,
+						    actions: [
+						        "Pin",
+						        "Close"
+						    ],
+						    close: onClose
+						}).data("kendoWindow").center();
+						xmdhWindow.kendoWindow({
+						    width: "800px",
+							height:"500px",
+						    title: "项目导航",
+						    visible: false,
+						    actions: [
+						        "Pin",
+						        "Close"
+						    ],
+						    close: onClose
+						}).data("kendoWindow").center();
+						yhglWindow.kendoWindow({
+						    width: "800px",
+							height:"500px",
+						    title: "用户管理",
+						    visible: false,
+						    actions: [
+						        "Pin",
+						        "Close"
+						    ],
+						    close: onClose
+						}).data("kendoWindow").center();
+						jsglWindow.kendoWindow({
+						    width: "800px",
+							height:"500px",
+						    title: "角色管理",
+						    visible: false,
+						    actions: [
+						        "Pin",
+						        "Close"
+						    ],
+						    close: onClose
+						}).data("kendoWindow").center();
+						zyglWindow.kendoWindow({
+						    width: "800px",
+							height:"500px",
+						    title: "资源管理",
+						    visible: false,
+						    actions: [
+						        "Pin",
+						        "Close"
+						    ],
+						    close: onClose
+						}).data("kendoWindow").center();
+						jgglWindow.kendoWindow({
+						    width: "800px",
+							height:"500px",
+						    title: "部门管理",
+						    visible: false,
+						    actions: [
+						        "Pin",
+						        "Close"
+						    ],
+						    close: onClose
+						}).data("kendoWindow").center();
+			        });
+			    </script>
+			    <style>
+			
+			        #example {
+			            min-height:500px;
+			        }
+			        .k-window-content a {
+			            color: #BBB;
+			        }
+			        .k-window-content p {
+			            margin-bottom: 1em;
+			        }
+			        
+			        media screen and (max-width: 1023px) {
+			            div.k-window {
+			                display: none !important;
+			            }
+			        }
+			    </style>
+			</div>
+			
+		</div>
+		
+		<!--页面背景 结束-->
+		<script>
+			boxheight(); //执行函数
+			function boxheight() { //函数：获取尺寸
+				//获取浏览器窗口高度
+				var winHeight = 0;
+				if(window.innerHeight)
+					winHeight = window.innerHeight;
+				else if((document.body) && (document.body.clientHeight))
+					winHeight = document.body.clientHeight;
+				//通过Document对body进行检测，获取浏览器可视化高度
+				if(document.documentElement && document.documentElement.clientHeight)
+					winHeight = document.documentElement.clientHeight;
+				//DIV高度为浏览器窗口高度
+				document.getElementById("app").style.height = winHeight - 36+ "px";
+			}
+			window.onresize = boxheight; //窗口或框架被调整大小时执行
+		</script>
+		
+		<script>
+		/* 		//屏蔽鼠标右键
+        document.oncontextmenu = function () { return false; }
+        document.onkeydown = function () {
+            var e = window.event || arguments[0];
+            //屏蔽F12
+            if (e.keyCode == 123) {
+                return false;
+                //屏蔽Ctrl+Shift+I
+            } else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+                return false;
+                //屏蔽Shift+F10
+            } else if ((e.shiftKey) && (e.keyCode == 121)) {
+                return false;
+            }
+        };
+		*/
+		</script>
+		<footer>
+		</footer>
+		
+		<!-- 是否必要待确定
+	-->
+	</body>
+
+</html>

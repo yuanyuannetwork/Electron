@@ -1,0 +1,42 @@
+/*背景*/
+.box1{
+	background-color: #3E2F7F;
+}
+.box2{
+	background-color: #A1206B;
+}
+.box3{
+	background-color: #EF9B36;
+}
+/*按钮*/
+.btn-default{
+	background-color: #564EC0;
+	color:white;
+}
+.btn-default:hover{
+	background-color: #564EC0;
+}
+.btn-default.active{
+	background-color: #34BFA3;
+}
+/*
+表格
+*/
+/*表格外层div*/
+.table-body{
+	padding: 0 0 0 0;
+	overflow-y: scroll;
+}
+.table-default{
+	background-color: white;
+}
+.table-default thead{
+	background-color: #716aca;
+	color: white;
+}
+.table-default>tbody>tr:hover {
+	background-color:#564EC0;
+	color:white;
+}
+
+

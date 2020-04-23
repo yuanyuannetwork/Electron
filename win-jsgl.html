@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="" />
+		
+		<!--清除缓存-->
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		
+		<link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+		<!--
+		<link href="assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+		-->
+		<link href="css/default.css" rel="stylesheet" type="text/css" />
+		<script src="js/ck.js" type="text/javascript"></script>
+		<style>
+		.primary {
+			border-color: rgb(88, 103, 221);
+			background:rgb(88, 103, 221);
+		}
+		.success{
+			border-color:rgb(52, 191, 163);
+			background:rgb(52, 191, 163);
+		}
+		#viewDiv{
+			margin:0 auto
+		}
+		.m-body{
+		  background:#3E2F7F;
+		  height:auto;
+		  margin: 0;
+		}
+		.projectpanel{
+		  margin: 5px 5px 5px 5px;
+		  background:#A1206B;
+		 
+		}
+		.pagepanel{
+		  margin: 5px 5px 5px 5px;
+		  background:#EF9B36;
+		 
+		}
+		.previewpanel{
+		  margin: 5px 5px 5px 5px;
+		  background:#A09B01;
+		 
+		}
+		.portletheader{
+		  margin: 25px 5px 5px 5px;
+		}
+		.itemrow{
+		  height:50px;
+		}
+		.select2-container .select2-selection--single{  
+		  height:calc(2.95rem + 2px);
+		  width:auto;
+		}  
+	</style>
+	</head>
+	
+	<body class="m-body">
+
+		<!--页面背景 开始-->
+		<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop " >
+			<div class="m-content" id="app">
+				<!--编辑框区域-->
+				<div class="row">
+					<h4>实例窗口</h4>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+	<script src="assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+	<!-- <script src="assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script> -->
+	<script src="assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
+	
+	<script src="assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+	
+	<script src="assets/demo/default/custom/crud/datatables/basic/scrollable.js" type="text/javascript"></script>
+	
+				
+		<script>
+			boxheight(); //执行函数
+			function boxheight() { //函数：获取尺寸
+				//获取浏览器窗口高度
+				var winHeight = 0;
+				if(window.innerHeight)
+					winHeight = window.innerHeight;
+				else if((document.body) && (document.body.clientHeight))
+					winHeight = document.body.clientHeight;
+				//通过Document对body进行检测，获取浏览器可视化高度
+				if(document.documentElement && document.documentElement.clientHeight)
+					winHeight = document.documentElement.clientHeight;
+				//DIV高度为浏览器窗口高度
+				document.getElementById("app").style.height = winHeight - 36+ "px";
+				document.getElementById("table").style.height= winHeight - 310+ "px";
+			}
+			window.onresize = boxheight; //窗口或框架被调整大小时执行
+		</script>
+		<footer>
+		</footer>
+
+		<!-- 是否必要待确定
+	-->
+	</body>
+
+</html>

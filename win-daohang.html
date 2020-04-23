@@ -1,0 +1,564 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="APP" />
+		<link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/demo6/base/style.bundle.css" rel="stylesheet" type="text/css" />
+		<!--
+		<link href="assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+		-->
+		<script src="js/vue.js"></script>
+		<script src="js/vue-resource.js"></script>
+		<script src="js/Convert_Pinyin.js"></script>
+		<script src="js/config.js"></script>
+	</head>
+
+	<body>
+		
+		<!--页面背景 开始-->
+		<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" id="app">
+			<!--项目面板 开始-->
+			<div class="col-12">
+				<div class="m-wizard m-wizard--2 m-wizard--success" id="m_wizard">
+				
+									<!--begin: Message container -->
+									<div class="m-portlet__padding-x">
+				
+										<!-- Here you can put a message or alert -->
+									</div>
+				
+									<!--end: Message container -->
+				
+									<!--begin: Form Wizard Head -->
+									<div class="m-wizard__head m-portlet__padding-x" style="margin-top: 40px;">
+				
+										<!--begin: Form Wizard Progress -->
+										<div class="m-wizard__progress">
+											<div class="progress">
+												<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+											</div>
+										</div>
+										<!--end: Form Wizard Progress -->
+				
+										<!--begin: Form Wizard Nav -->
+										<div class="m-wizard__nav">
+											<div class="m-wizard__steps">
+												<div class="m-wizard__step m-wizard__step--current" m-wizard-target="m_wizard_form_step_1">
+													<a href="#" class="m-wizard__step-number">
+														<span><i class="fa  flaticon-placeholder"></i></span>
+													</a>
+													<div class="m-wizard__step-info">
+														<div class="m-wizard__step-title">
+															1. 创建项目
+														</div>
+														
+													</div>
+												</div>
+												<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_2">
+													<a href="#" class="m-wizard__step-number">
+														<span><i class="fa  flaticon-layers"></i></span>
+													</a>
+													<div class="m-wizard__step-info">
+														<div class="m-wizard__step-title">
+															2. 流程管理
+														</div>
+														
+													</div>
+												</div>
+												<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_3">
+													<a href="#" class="m-wizard__step-number">
+														<span><i class="fa  flaticon-layers"></i></span>
+													</a>
+													<div class="m-wizard__step-info">
+														<div class="m-wizard__step-title">
+															3. 数据管理
+														</div>
+														
+													</div>
+												</div>
+												<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_4">
+													<a href="#" class="m-wizard__step-number">
+														<span><i class="fa  flaticon-layers"></i></span>
+													</a>
+													<div class="m-wizard__step-info">
+														<div class="m-wizard__step-title">
+															4. 添加数据
+														</div>
+														
+													</div>
+												</div>
+											</div>
+										</div>
+				
+										<!--end: Form Wizard Nav -->
+									</div>
+				
+									<!--end: Form Wizard Head -->
+				
+									<!--begin: Form Wizard Form-->
+									<div class="m-wizard__form" style="margin-top: -10px;">
+				
+										<!--
+				    1) Use m-form--label-align-left class to alight the form input lables to the right
+				    2) Use m-form--state class to highlight input control borders on form validation
+				    -->
+										<form class="m-form m-form--label-align-left- m-form--state-" id="m_form">
+				
+											<!--begin: Form Body -->
+											<div class="m-portlet__body">
+				
+												<!--begin: Form Wizard Step 1-->
+												<div class="m-wizard__form-step m-wizard__form-step--current" id="m_wizard_form_step_1"  >
+													<div class="row">
+														<div class="col-xl-8 offset-xl-2">
+															<div class="m-form__section m-form__section--first">
+																
+																<div class="form-group m-form__group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">* 项目名称:</label>
+																	<div class="col-xl-9 col-lg-9">
+																		<input 
+																		type="text" 
+																		name="name" 
+																		id="pagename"
+																		onkeyup="value=value.replace(/[\d]/g,'') "
+																		onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[\d]/g,''))" 
+																		class="form-control m-input" 
+																		placeholder="" 
+																		@keyup.enter="addxiangmu()">
+																		
+																	</div>
+																</div>
+																
+																<div class="form-group m-form__group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">负责人姓名:</label>
+																	<div class="col-xl-9 col-lg-9">
+																		<input type="text" class="form-control m-input" placeholder="" value="张三">
+																	</div>
+																</div>
+																
+																<div class="form-group m-form__group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">负责人电话</label>
+																	<div class="col-xl-9 col-lg-9">
+																		<div class="input-group">
+																			<div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span></div>
+																			<input type="text"  class="form-control m-input" placeholder="" value="">
+																		</div>
+																		
+																	</div>
+																</div>
+																
+																<div class="form-group m-form__group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label"> 项目描述:</label>
+																	<div class="col-xl-9 col-lg-9">
+																		<textarea type="text" class="form-control m-input" placeholder="" ></textarea>
+																		<span class="m-form__help"></span>
+																	</div>
+																</div>
+																
+															</div>
+															
+														</div>
+													</div>
+												</div>
+				
+												<!--end: Form Wizard Step 1-->
+				
+												<!--begin: Form Wizard Step 2-->
+												<div class="m-wizard__form-step" id="m_wizard_form_step_2" >
+													<div class="row">
+														<div class="col-lg-12" id="fbuder">
+															<object type="text/html" :data="gethref('formBuilder')"  width="100%" height="100%"></object>
+														</div>
+													</div>
+												</div>
+				
+												<!--end: Form Wizard Step 2-->
+				
+												<!--begin: Form Wizard Step 3-->
+												<div class="m-wizard__form-step" id="m_wizard_form_step_3">
+													<div class="row">
+														<div class="col-lg-12" id="rtpl">
+															<object type="text/html" :data="gethref('rowtemplate')" width="100%" height="100%"></object>
+														</div>
+													</div>
+												</div>
+				
+												<!--end: Form Wizard Step 3-->
+												<!--begin: Form Wizard Step 4-->
+												<div class="m-wizard__form-step" id="m_wizard_form_step_4">
+													<div class="row">
+														<div class="col-lg-12" id="sj">
+															<object type="text/html" :data="gethref('shuju')"  width="100%" height="100%"></object>	
+														</div>
+													</div>
+												</div>
+																
+												<!--end: Form Wizard Step 4-->
+											</div>
+				
+											<!--end: Form Body -->
+				
+											<!--begin: Form Actions -->
+											<div class="m-portlet__foot m-portlet__foot--fit ">
+												<div class="m-form__actions">
+													<div class="row">
+														<div class="col-lg-2"></div>
+														<div class="col-lg-4 m--align-left">
+															<a href="#" class="btn btn-secondary m-btn m-btn--custom m-btn--icon" data-wizard-action="prev">
+																<span>
+																	<i class="la la-arrow-left"></i>&nbsp;&nbsp;
+																	<span>返回</span>
+																</span>
+															</a>
+														</div>
+														<div class="col-lg-4 m--align-right" id="footer-right-btn">
+															<a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon" data-wizard-action="submit">
+																<span>
+																	<i class="la la-check"></i>&nbsp;&nbsp;
+																	<span>完成</span>
+																</span>
+															</a>
+															
+															<a @click="kaishi()"  class="btn btn-warning m-btn m-btn--success " data-wizard-action="prev"  >
+																<span>
+																	<span>全屏编辑</span>&nbsp;&nbsp;
+																</span>
+															</a>
+															
+															<a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon" @click="panduan()" data-wizard-action="next"  >
+																<span>
+																	<span>下一步</span>&nbsp;&nbsp;
+																	<i class="la la-arrow-right"></i>
+																</span>
+															</a>
+														</div>
+														<div class="col-lg-2"></div>
+													</div>
+												</div>
+											</div>
+				
+											<!--end: Form Actions -->
+										</form>
+									</div>
+				
+									<!--end: Form Wizard Form-->
+								</div>
+			</div>
+			
+			<!--项目面板 结束-->
+			
+		</div>
+		</div>
+		
+		<script>
+					var vm = new Vue({
+						el: '#app',
+						data: {
+							wid:'a19707f1-7169-45fa-a97b-3579997f8327',
+							token:'a19707f1-7169-45fa-a97b-3579997f8327',
+							ip:ip(),
+							projectname:'',
+							desc:false,
+							
+						},
+						methods:{
+							
+							addxiangmu(){
+								url = this.ip+'/ui/saveproject';
+								
+								var projectdesc=document.getElementById('pagename').value;
+								if(projectdesc==""){
+									return false;
+								}
+								var projectname= this.convertEname(document.getElementById('pagename').value);
+								this.projectname=projectname;
+								this.$http.jsonp(url, {
+										params: {
+											projectname: projectname,
+											projectdesc: projectdesc ,
+											uuid: this.uuids(),
+											wid: this.wid,
+											token: this.token
+										}
+									}).then(function(res) {
+										//console.log(res)
+										//alert("提交成功")
+										
+									})
+									.catch(function(error) {
+										console.log(error);
+									})
+							},
+							gethref(type){
+									this.type=type;
+								
+									if(type=="formBuilder"){
+										//document.getElementById('footer-right-btn').innerHTML+='<a :href="gethref('+type+')" target="_blank" class="btn btn-success m-btn m-btn--custom m-btn--icon" data-wizard-action="prev"><span><span>全屏编辑</span></span></a>'
+										this.type1=type;
+										return "win-formBuilder.html?projectName="+this.projectname
+										
+									}else if(type=="rowtemplate"){
+										this.type2=type;
+										return "win-rowtemplate.html?projectName="+this.projectname
+										
+									}else if(type=="shuju"){
+										this.type3=type;
+										return "win-shuju.html?projectName="+this.projectname
+										
+									}
+								
+								
+							},
+							getquanpin(){
+								window.location.href="win-formBuilder.html?projectName="+this.projectname;
+								this.kaishi();
+							},
+							panduan(){
+								
+								if(this.projectname!=''){
+									desc=false;
+								}else{
+									this.addxiangmu();
+									desc=true;
+								}
+								
+							},
+							uuids() {
+								var s = [];
+								var hexDigits = "0123456789abcdef";
+								for (var i = 0; i < 36; i++) {
+									s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+								} 
+								s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+								s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+								s[8] = s[13] = s[18] = s[23] = "-";
+							 
+								var uuid = s.join("");
+								return uuid;
+							},
+							convertEname(keyword) { //首字母大写事件
+								var full = pinyin.getFullChars(keyword); //获取全写拼音
+								//var simply = pinyin.getCamelChars(keyword); //获取简写拼音(提取首字母并大写)
+								if (full != '') {
+									full = full.toLowerCase().replace(full[0], full[0].toUpperCase());
+								}
+								return full;
+							},
+							kaishi() {
+
+								var docElm = document.documentElement;
+								//W3C   
+								if (docElm.requestFullscreen) {
+									docElm.requestFullscreen();
+								}
+								//FireFox   
+								else if (docElm.mozRequestFullScreen) {
+									docElm.mozRequestFullScreen();
+								}
+								//Chrome等   
+								else if (docElm.webkitRequestFullScreen) {
+									docElm.webkitRequestFullScreen();
+								}
+								//IE11   
+								else if (elem.msRequestFullscreen) {
+									elem.msRequestFullscreen();
+								}
+								
+								document.addEventListener("fullscreenchange", function() {
+
+									fullscreenState.innerHTML = (document.fullscreen) ? "" : "not ";
+								}, false);
+
+								document.addEventListener("mozfullscreenchange", function() {
+
+									fullscreenState.innerHTML = (document.mozFullScreen) ? "" : "not ";
+								}, false);
+
+								document.addEventListener("webkitfullscreenchange", function() {
+
+									fullscreenState.innerHTML = (document.webkitIsFullScreen) ? "" : "not ";
+								}, false);
+
+								document.addEventListener("msfullscreenchange", function() {
+
+									fullscreenState.innerHTML = (document.msFullscreenElement) ? "" : "not ";
+								}, false);
+						
+							},
+					
+						},
+					})
+				
+			</script>	
+		
+		
+		<script src="js/jquery.min.js"></script>
+		<!--页面背景 结束-->
+		
+		<footer>
+		</footer>
+		<script src="assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+		<!-- <script src="assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script> -->
+		<script src="assets/demo6/base/scripts.bundle.js" type="text/javascript"></script>
+		<script src="assets/app/js/dashboard.js" type="text/javascript"></script>
+
+		<script>
+			var WizardDemo = function() {
+				$("#m_wizard");
+				var e, r, i = $("#m_form");
+				return {
+					init: function() {
+						var n;
+						$("#m_wizard"), i = $("#m_form"), (r = new mWizard("m_wizard", {
+							startStep: 1
+						})).on("beforeNext", function(r) {
+							!0 !== e.form() && r.stop()
+						}), r.on("change", function(e) {
+							mUtil.scrollTop()
+						}), r.on("change", function(e) {
+							1 === e.getStep() && alert(1)
+						}), e = i.validate({
+							ignore: ":hidden",
+							rules: {
+								name: {
+									required: !0
+								},
+								email: {
+									required: !0,
+									email: !0
+								},
+								phone: {
+									required: !0,
+									phoneUS: !0
+								},
+								address1: {
+									required: !0
+								},
+								state: {
+									required: !0
+								},
+								account_url: {
+									required: !0,
+									url: !0
+								},
+								account_username: {
+									required: !0,
+									minlength: 4
+								},
+								account_password: {
+									required: !0,
+									minlength: 6
+								},
+								account_group: {
+									required: !0
+								},
+								"account_communication[]": {
+									required: !0
+								},
+								billing_card_name: {
+									required: !0
+								},
+								billing_card_number: {
+									required: !0,
+									creditcard: !0
+								},
+								billing_card_exp_month: {
+									required: !0
+								},
+								billing_card_exp_year: {
+									required: !0
+								},
+								billing_card_cvv: {
+									required: !0,
+									minlength: 2,
+									maxlength: 3
+								},
+								billing_address_1: {
+									required: !0
+								},
+								billing_address_2: {},
+								billing_city: {
+									required: !0
+								},
+								billing_state: {
+									required: !0
+								},
+								billing_zip: {
+									required: !0,
+									number: !0
+								},
+								billing_delivery: {
+									required: !0
+								},
+								accept: {
+									required: !0
+								}
+							},
+							messages: {
+								"account_communication[]": {
+									required: "You must select at least one communication option"
+								},
+								accept: {
+									required: "You must accept the Terms and Conditions agreement!"
+								}
+							},
+							invalidHandler: function(e, r) {
+								mUtil.scrollTop(), swal({
+									title: "",
+									text: "您提交的内容中有错误,请修改后重新提交.",
+									type: "error",
+									confirmButtonClass: "btn btn-secondary m-btn m-btn--wide"
+								})
+							},
+							submitHandler: function(e) {}
+						}), (n = i.find('[data-wizard-action="submit"]')).on("click", function(r) {
+							r.preventDefault(), e.form() && (mApp.progress(n), i.ajaxSubmit({
+								success: function() {
+									mApp.unprogress(n), swal({
+										title: "",
+										text: "恭喜您项目创建完成!",
+										type: "success",
+										confirmButtonClass: "btn btn-secondary m-btn m-btn--wide"
+									})
+								}
+							}))
+						})
+					}
+				}
+			}();
+			jQuery(document).ready(function() {
+				WizardDemo.init()
+				
+			});
+			
+		</script>
+		
+		<script>
+				boxheight(); //执行函数
+			function boxheight() { //函数：获取尺寸
+				//获取浏览器窗口高度
+				var winHeight = 0;
+				if(window.innerHeight)
+					winHeight = window.innerHeight;
+				else if((document.body) && (document.body.clientHeight))
+					winHeight = document.body.clientHeight;
+				//通过Document对body进行检测，获取浏览器可视化高度
+				if(document.documentElement && document.documentElement.clientHeight)
+					winHeight = document.documentElement.clientHeight;
+				//DIV高度为浏览器窗口高度
+				document.getElementById("app").style.height = winHeight - 36+ "px";
+				document.getElementById("rtpl").style.height= winHeight - 260+ "px";
+				document.getElementById("sj").style.height= winHeight - 260+ "px";
+				document.getElementById("fbuder").style.height= winHeight - 260+ "px";
+			}
+			window.onresize = boxheight; //窗口或框架被调整大小时执行
+		</script>
+		<script>
+		
+			
+		</script>
+	</body>
+
+</html>

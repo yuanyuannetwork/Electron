@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="APP" />
+		<link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+			
+		<!--
+		<link href="assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+		-->
+		<style>
+			body{
+			  background:#3E2F7F;
+			  height:auto
+			}
+			
+		</style>
+	
+	</head>
+
+	<body>
+
+		
+		<!--页面背景 开始-->
+		<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" id="example" style="padding-left: 15px;padding-top: 15px;padding-right: 15px;">
+			<!--项目面板 开始-->
+		
+			<h4>实例窗口</h4>>
+
+			<!--项目面板 结束-->
+
+		</div>
+
+	
+			<!-- begin::调整窗口大小 -->
+			<script>
+				boxheight(); //执行函数
+				function boxheight() { //函数：获取尺寸
+					//获取浏览器窗口高度
+					var winHeight = 0;
+					if(window.innerHeight)
+						winHeight = window.innerHeight;
+					else if((document.body) && (document.body.clientHeight))
+						winHeight = document.body.clientHeight;
+					//通过Document对body进行检测，获取浏览器可视化高度
+					if(document.documentElement && document.documentElement.clientHeight)
+						winHeight = document.documentElement.clientHeight;
+					//DIV高度为浏览器窗口高度
+					document.getElementById("spreadsheet").style.height = winHeight - 35 + "px";
+				}
+				window.onresize = boxheight; //窗口或框架被调整大小时执行
+			</script>
+	
+	</body>
+
+</html>
